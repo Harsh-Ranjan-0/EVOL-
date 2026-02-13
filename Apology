@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I’m Sorry 😔</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#2b5876,#4e4376);
+  font-family:sans-serif;
+}
+.card{
+  background:white;
+  padding:30px;
+  border-radius:18px;
+  max-width:340px;
+  text-align:center;
+  box-shadow:0 15px 40px rgba(0,0,0,.3);
+}
+h1{color:#444;}
+p{font-size:16px;}
+button{
+  margin:10px;
+  padding:12px 22px;
+  border:none;
+  border-radius:25px;
+  font-size:16px;
+  cursor:pointer;
+}
+#forgive{background:#6a5acd;color:white;}
+#ignore{background:#ccc;}
+.hidden{display:none;}
+</style>
+</head>
+<body>
+
+<div class="card" id="page1">
+  <h1>I’m Sorry 😔</h1>
+  <p>I know I hurt you…  
+  I didn’t mean to, but intentions don’t erase pain.</p>
+  <button id="forgive">Forgive me 🤍</button>
+  <button id="ignore">Ignore 🙁</button>
+</div>
+
+<div class="card hidden" id="page2">
+  <h1>Thank You 🥺</h1>
+  <p id="msg"></p>
+</div>
+
+<script>
+const ignore = document.getElementById("ignore");
+const forgive = document.getElementById("forgive");
+const p1 = document.getElementById("page1");
+const p2 = document.getElementById("page2");
+const msg = document.getElementById("msg");
+
+ignore.addEventListener("mouseover",()=>{
+  ignore.style.transform=`translate(${Math.random()*200-100}px,${Math.random()*100-50}px)`;
+});
+
+forgive.onclick=()=>{
+  p1.classList.add("hidden");
+  p2.classList.remove("hidden");
+  const name = new URLSearchParams(location.search).get("name") || "you";
+  msg.innerText = `Thank you for giving me another chance, ${name}.
+I promise I’ll do better.`;
+};
+</script>
+</body>
+</html>
