@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>The Question 💍</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:radial-gradient(circle,#ff9a9e,#fad0c4);
+  font-family:sans-serif;
+}
+.box{
+  background:white;
+  padding:35px;
+  border-radius:22px;
+  text-align:center;
+  max-width:360px;
+}
+button{
+  padding:14px 26px;
+  margin:10px;
+  border:none;
+  border-radius:30px;
+  font-size:17px;
+}
+#yes{background:#ff4d6d;color:white;}
+#no{background:#ddd;position:absolute;}
+.hidden{display:none;}
+</style>
+</head>
+<body>
+
+<div class="box" id="q">
+  <h1>One Question 💍</h1>
+  <p>I don’t want perfect days.  
+  I want all days — with you.</p>
+  <button id="yes">Say Yes 💖</button>
+  <button id="no">No 😳</button>
+</div>
+
+<div class="box hidden" id="a">
+  <h1>She Said YES 💍❤️</h1>
+  <p id="final"></p>
+</div>
+
+<script>
+const no = document.getElementById("no");
+const yes = document.getElementById("yes");
+const q = document.getElementById("q");
+const a = document.getElementById("a");
+const final = document.getElementById("final");
+
+no.onmouseover=()=>{
+  no.style.left=Math.random()*200+"px";
+  no.style.top=Math.random()*150+"px";
+};
+
+yes.onclick=()=>{
+  q.classList.add("hidden");
+  a.classList.remove("hidden");
+  const name = new URLSearchParams(location.search).get("name") || "my forever";
+  final.innerText = `${name}, will you marry me and make life beautiful together?`;
+};
+</script>
+</body>
+</html>
