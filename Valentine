@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine 💘</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  font-family:sans-serif;
+}
+.card{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  text-align:center;
+  max-width:330px;
+}
+button{
+  padding:12px 24px;
+  border:none;
+  border-radius:25px;
+  font-size:16px;
+  margin:10px;
+}
+#yes{background:#ff4d6d;color:white;}
+#no{background:#ddd;}
+.hidden{display:none;}
+</style>
+</head>
+<body>
+
+<div class="card" id="v1">
+  <h1>Hey Cutie 💘</h1>
+  <p>Will you be my Valentine?</p>
+  <button id="yes">Yes 😍</button>
+  <button id="no">No 🙄</button>
+</div>
+
+<div class="card hidden" id="v2">
+  <h1>Yayyy 💖</h1>
+  <p id="txt"></p>
+</div>
+
+<script>
+const no=document.getElementById("no");
+const yes=document.getElementById("yes");
+
+no.onmouseover=()=>{
+  no.style.transform=`translate(${Math.random()*180-90}px,${Math.random()*80-40}px)`;
+};
+
+yes.onclick=()=>{
+  v1.classList.add("hidden");
+  v2.classList.remove("hidden");
+  const name=new URLSearchParams(location.search).get("name")||"Valentine";
+  txt.innerText=`Happy Valentine’s Day ${name} 💐
+You just made my day ❤️`;
+};
+</script>
+</body>
+</html>
